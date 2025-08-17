@@ -1,7 +1,11 @@
 import React from 'react'
 import { useState,useEffect } from 'react'
 import axios from 'axios'
-// import '/bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Link } from 'react-router-dom';
+import {FaEdit, FaTrash, FaUserPlus} from 'react-icons/fa'
+import './get.css'
+
 
 function Getuser() {
     const [users, setUsers] = useState([])
@@ -19,7 +23,8 @@ function Getuser() {
   return (
     <div>
         <div className="table">
-            <table className='table table-bordered'>
+            <Link to={'/add'}><button className='btn btn-primary'>AddUser<FaUserPlus /></button></Link>
+            <table className='tb table-bordered'>
                 <thead>
                     <th scope='col'>S/N</th>
                     <th scope='col'>Name</th>
@@ -29,6 +34,7 @@ function Getuser() {
                      <th scope='col'>Role</th>
                     <th scope='col'>Status</th>
                     <th scope='col'>Wallet</th>
+                    <th scope='col'>Actions</th>
                 </thead>
                 <tbody>
                     {
@@ -37,11 +43,18 @@ function Getuser() {
                                 <td>{index+1}</td>
                                  <td>{user.name}</td>
                                   <td>{user.email}</td>
-                                   <td>{user.password}</td>
-                                    <td>{user.address}</td>
+                                   <td>{user.address}</td>
+                                    <td>{user.password}</td>
                                      <td>{user.role}</td>
                                     <td>{user.status}</td>
                                      <td>{user.wallet}</td>
+                                     <td>
+                                        <div className="actions">
+                                        <button className='btn btn-success' ><Link to={'/update'} id='edit'>< FaEdit id='icon'/></Link></button>
+                                        <button className='btn btn-danger'><FaTrash /></button>
+                                        </div>
+                
+                                     </td>
                             </tr>
                         })
                     }
