@@ -32,3 +32,8 @@ table{
 #icon{
     text-decoration: none;
 }
+.data{
+    text-align: center;
+    font-family: sans-serif;
+    background-color: aliceblue;
+}

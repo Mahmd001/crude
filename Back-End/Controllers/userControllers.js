@@ -12,7 +12,7 @@ exports.create = async(req, res)=>{
             return res.status(400).json({errorMessage: "user already exist..."})
         }  
         const saved = await newUser.save();
-        res.status(201).json(saved)
+        res.status(201).json({message: "User created successifull"})
     } catch (error) {
         console.log({errorMessage: error.message})
     }

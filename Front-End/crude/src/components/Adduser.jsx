@@ -3,8 +3,9 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import axios from 'axios'
 import '../App.css'
 import { useState } from 'react'
-
+import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
+import Swal from 'sweetalert2'
 
 function Adduser() {
 const users = {
@@ -23,14 +24,28 @@ const handledinput = (e)=>{
 };
 
 const handledsubmit = async(e)=>{
-  e.prevenDefaut();
+  e.preventDefault();
   try {
-    const response = await axios.post("http://localhost:3001/api/user",user)
-    console.log("user created succesifull")
+    const response =  await axios.post("http://localhost:3001/api/user",user)
+    // toast.success(response.data.message,{position:"top-right"})
+    Swal.fire({
+      title: "Registration",
+      text: 'User created successifully',
+      icon: 'success'
+    })
     navigate('/')
   } catch (error) {
     console.log(error)
+    // toast.error(error?.data?.message,{position:"top-right"})
+    Swal.fire({
+      title: "Failed",
+      text: "failed to create user",
+      icon: "error"
+    })
   }
+    
+  
+ 
 }
  
   return (

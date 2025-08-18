@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 import {FaEdit, FaTrash, FaUserPlus} from 'react-icons/fa'
 import './get.css'
+import Swal from 'sweetalert2';
 
 
 function Getuser() {
@@ -19,12 +20,38 @@ function Getuser() {
             }
         };
         fetchdata()
-    },[])
+    },[]);
+
+   const deletedUser = async(userid)=>{
+    try {
+        await axios.delete(`http://localhost:3001/api/delete/${userid}`)
+        setUsers((prevUser)=>prevUser.filter((user)=>user._id !==userid))
+        Swal.fire({
+            title: "Delete",
+            text: "User deleted successifull",
+            icon:'success'
+        })
+    } catch (error) {
+        console.log(error)
+          Swal.fire({
+            title: "failed",
+            text: "Failed to delete user",
+            icon:'error'
+        })
+    }
+   }
   return (
     <div>
         <div className="table">
-            <Link to={'/add'}><button className='btn btn-primary'>AddUser<FaUserPlus /></button></Link>
-            <table className='tb table-bordered'>
+            <Link to={'/add'}><button  type='button' class='btn btn-primary'>AddUser<FaUserPlus /></button></Link>
+              {users.length == 0?(
+                <div className="data">
+                    <h3>No Data to display</h3>
+                    <p>please add new user</p>
+                </div>
+              ):(
+                 <table className='tb table-bordered'>
+              
                 <thead>
                     <th scope='col'>S/N</th>
                     <th scope='col'>Name</th>
@@ -50,16 +77,27 @@ function Getuser() {
                                      <td>{user.wallet}</td>
                                      <td>
                                         <div className="actions">
-                                        <button className='btn btn-success' ><Link to={'/update'} id='edit'>< FaEdit id='icon'/></Link></button>
-                                        <button className='btn btn-danger'><FaTrash /></button>
+                                        <Link to={`/update/`+user._id} 
+                                         type='button' 
+                                          class='btn btn-success'
+                                           ><FaEdit />
+                                           </Link>
+                                        <button 
+                                        onClick={()=>deletedUser(user._id)} 
+                                        type='button' 
+                                        class='btn btn-danger'
+                                        >
+                                        <FaTrash />
+                                        </button>
                                         </div>
-                
                                      </td>
                             </tr>
                         })
                     }
                 </tbody>
             </table>
+              )}
+           
         </div>
     </div>
   )
