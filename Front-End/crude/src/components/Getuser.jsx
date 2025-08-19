@@ -24,11 +24,11 @@ function Getuser() {
 
    const deletedUser = async(userid)=>{
     try {
-        await axios.delete(`http://localhost:3001/api/delete/${userid}`)
+      const response=  await axios.delete(`http://localhost:3001/api/delete/${userid}`)
         setUsers((prevUser)=>prevUser.filter((user)=>user._id !==userid))
         Swal.fire({
             title: "Delete",
-            text: "User deleted successifull",
+            text: response.data.message,
             icon:'success'
         })
     } catch (error) {
@@ -43,7 +43,7 @@ function Getuser() {
   return (
     <div>
         <div className="table">
-            <Link to={'/add'}><button  type='button' class='btn btn-primary'>AddUser<FaUserPlus /></button></Link>
+            <Link to={'/add'}><button  type='button' className='btn btn-primary'>AddUser<FaUserPlus /></button></Link>
               {users.length == 0?(
                 <div className="data">
                     <h3>No Data to display</h3>
@@ -52,7 +52,7 @@ function Getuser() {
               ):(
                  <table className='tb table-bordered'>
               
-                <thead>
+                <tr>
                     <th scope='col'>S/N</th>
                     <th scope='col'>Name</th>
                     <th scope='col'>Email</th>
@@ -62,11 +62,11 @@ function Getuser() {
                     <th scope='col'>Status</th>
                     <th scope='col'>Wallet</th>
                     <th scope='col'>Actions</th>
-                </thead>
+                </tr>
                 <tbody>
                     {
                         users.map((user, index)=>{
-                         return  <tr>
+                         return  <tr key={index}>
                                 <td>{index+1}</td>
                                  <td>{user.name}</td>
                                   <td>{user.email}</td>
@@ -79,13 +79,13 @@ function Getuser() {
                                         <div className="actions">
                                         <Link to={`/update/`+user._id} 
                                          type='button' 
-                                          class='btn btn-success'
+                                          className='btn btn-success'
                                            ><FaEdit />
                                            </Link>
                                         <button 
                                         onClick={()=>deletedUser(user._id)} 
                                         type='button' 
-                                        class='btn btn-danger'
+                                        className='btn btn-danger'
                                         >
                                         <FaTrash />
                                         </button>

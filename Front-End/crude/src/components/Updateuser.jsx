@@ -43,7 +43,7 @@ const handledsubmit = async(e)=>{
     // toast.success(response.data.message,{position:"top-right"})
     Swal.fire({
       title: "Registration",
-      text: 'User updated successifully',
+      text: response.data.message,
       icon: 'success'
     })
     navigate('/')

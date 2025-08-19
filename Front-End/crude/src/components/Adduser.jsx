@@ -28,9 +28,10 @@ const handledsubmit = async(e)=>{
   try {
     const response =  await axios.post("http://localhost:3001/api/user",user)
     // toast.success(response.data.message,{position:"top-right"})
+    console.log(response)
     Swal.fire({
       title: "Registration",
-      text: 'User created successifully',
+      text: response.data.message,
       icon: 'success'
     })
     navigate('/')

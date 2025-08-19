@@ -3,10 +3,12 @@ const app = express()
 
 const DBconnect = require('./DBconfig/BDconfig.js')
 const router = require('./Routes/userRoutes.js')
+const route = require('./Routes/productRoute.js')
 
 const cors = require('cors')
 
 const mongoose = require('mongoose')
+
 require('dotenv').config()
 
 DBconnect()
@@ -23,3 +25,4 @@ app.listen(port,()=>{
 })
 
 app.use('/api', router)
+app.use('/api',route)
