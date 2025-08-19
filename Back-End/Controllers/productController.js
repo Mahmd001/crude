@@ -53,14 +53,14 @@ exports.update = async(req, res)=>{
         console.log({errorMessage: error.message})
     }
 }
-exports.deletes = async(req,res)=>{
+exports.deleteProduct = async(req,res)=>{
     try {
          const id = req.params.id
          const getById = await Product.findById(id)
         if(!getById || getById.length == 0){
             return res.status(400).json({errorMessage: "Product not found"})
         }
-        const deleteProduct = await Product.findByIdAndDelete(id)
+         await Product.findByIdAndDelete(id)
         res.status(200).json({Message: "product deleted successifull.."})
     } catch (error) {
           console.log({errorMessage: error.message})
