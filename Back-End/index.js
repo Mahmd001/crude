@@ -23,6 +23,4 @@ const port = process.env.PORT || 3001
 app.listen(port,()=>{
     console.log(`server is running on http://localhost:${port}`)
 })
-
-app.use('/api', router)
-app.use('/api',route)
+app.use('/api', require('./Routes'))
