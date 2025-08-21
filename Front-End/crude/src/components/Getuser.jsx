@@ -13,7 +13,7 @@ function Getuser() {
     useEffect(()=>{
         const fetchdata = async()=>{
             try {
-                const response = await axios.get("http://localhost:3001/api/users")
+                const response = await axios.get("http://localhost:3001/api/user")
                 setUsers(response.data)
             } catch (error) {
                 console.log(error.message)
@@ -51,8 +51,8 @@ function Getuser() {
                 </div>
               ):(
                  <table className='tb table-bordered'>
-              
-                <tr>
+              <thead>
+                 <tr>
                     <th scope='col'>S/N</th>
                     <th scope='col'>Name</th>
                     <th scope='col'>Email</th>
@@ -63,6 +63,8 @@ function Getuser() {
                     <th scope='col'>Wallet</th>
                     <th scope='col'>Actions</th>
                 </tr>
+              </thead>
+               
                 <tbody>
                     {
                         users.map((user, index)=>{

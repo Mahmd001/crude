@@ -27,7 +27,6 @@ const handledsubmit = async(e)=>{
   e.preventDefault();
   try {
     const response =  await axios.post("http://localhost:3001/api/user",user)
-    // toast.success(response.data.message,{position:"top-right"})
     console.log(response)
     Swal.fire({
       title: "Registration",

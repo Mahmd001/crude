@@ -4,6 +4,9 @@ const app = express()
 const DBconnect = require('./DBconfig/BDconfig.js')
 const router = require('./Routes/userRoutes.js')
 const route = require('./Routes/productRoute.js')
+const cookieParser = require('cookie-parser')
+app.use(cookieParser())
+
 
 const cors = require('cors')
 
