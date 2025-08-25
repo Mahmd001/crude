@@ -1,0 +1,35 @@
+
+.register{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    margin: 50px auto;
+    /* background-color: white; */
+}
+.register .rg-form{
+    background-color: white;
+    padding: 40px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 7px;
+}
+.register .btn{
+    width: 100%;
+    margin-top: 20px;
+}
+
+.register .rg-form .con-rg{
+    background-color: green;
+    color: white;
+    width: 100%;
+    border-radius: 10px;
+}
+.con-rg h2{
+    font-family: sans-serif;
+    text-align: center;
+    font-size: 20px;
+}
+.con-rg p{
+    text-align: center;
+    font-family: sans-serif;
+}

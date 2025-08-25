@@ -63,7 +63,7 @@ const handledsubmit = async(e)=>{
  
   return (
     <div className='con'>
-      <div className="form">
+      <div className="form-update">
         <form onSubmit={handledsubmit}>
           <div className="con">
             <label htmlFor="name">Name</label>

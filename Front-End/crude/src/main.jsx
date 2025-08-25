@@ -1,12 +1,14 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
-// import { Toaster } from 'react-hot-toast'
+import { AppcontextProvider } from './context/Appcontext.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-      {/* <Toaster /> */}
-    <App />
+   <AppcontextProvider>
+     <App /> 
+   </AppcontextProvider>
+   
   
   </StrictMode>,
 )

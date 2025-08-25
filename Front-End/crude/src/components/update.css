@@ -1,4 +1,4 @@
-.form{
+.form-update{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,7 +13,7 @@
     width: 100%;
     margin-top: 15px;
 }
-form h2{
+.form-update form h2{
     text-align: center;
     font-family: sans-serif;
 }
