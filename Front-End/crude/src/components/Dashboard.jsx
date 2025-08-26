@@ -1,10 +1,11 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import './dash.css'
 import mylogo from '../assets/amad-logo.jpg'
 import { Appcontext } from '../context/Appcontext'
 import axios from 'axios'
 import Swal from 'sweetalert2'
-import { useNavigate } from 'react-router-dom'
+import { UNSAFE_withHydrateFallbackProps, useNavigate } from 'react-router-dom'
+import { Button } from 'bootstrap'
 
 
 
@@ -36,23 +37,25 @@ function Dashboard() {
     }
   }
   
+  const [open, setOpen] = useState(false)
 
   return (
     <div id='amad'>
         <header>
           <img src={mylogo} alt="Amad-logo" />
-            {userData ?
-            <div className='profile'>{userData.name[0].toUpperCase()}
-             <div className="div">
-              <ul>
-                <li>profile</li>
-                <li onClick={logout}>logout</li>
-              </ul>
-             </div>
+            <div onClick={()=>setOpen(!open)} className="side">
+              {userData.name[0].toUpperCase()}
+              {open && (
+                <div className="content">
+                <ul>
+                  <li>Profile</li>
+                  <li onClick={logout}>Logout</li>
+                  <li>Settings</li>
+                </ul>
+              </div>
+              )}
             </div>
-           
-            :<button onClick={logout}>logout</button>
-          }
+          
         </header>
         <div className="side-bar">
           <ul>

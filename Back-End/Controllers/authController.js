@@ -212,7 +212,7 @@ exports.isAuthenticate = async(req, res)=>{
     try {
         res.status(200).json({Message: "user authenticated successifull"})
     } catch (error) {
-        console.log({errorMessage: error.message})
+        console.log({Message: error.message})
     }
 }
 

@@ -17,6 +17,7 @@ exports.Getuser = async(req, res)=>{
         isAccountVerify: user.isAccountVerify
     }})
     } catch (error) {
-        res.status(500).json({errorMessage: error.message})
+        console.log({Message:error.message})
+        res.status(500).json({Message: error.message})
     }
 }

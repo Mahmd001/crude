@@ -7,6 +7,7 @@ import Login from './components/Login'
 import Register from './components/Register'
 import Dashboard from './components/Dashboard'
 import Verification from './components/Verification'
+import Drop from './components/Drop'
 // import { Toaster } from 'react-hot-toast'
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path='/register' element ={<Register/>}></Route>
           <Route path='/dash' element ={<Dashboard />}></Route>
           <Route path='/otp' element ={<Verification/>}></Route>
+          <Route path='/drop' element ={<Drop/>}></Route>
       </Routes>
     </Router>
   )

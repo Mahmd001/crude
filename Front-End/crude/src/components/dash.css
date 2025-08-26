@@ -75,7 +75,7 @@ header button{
     display: flex;
     position: absolute;
     bottom: 50px;
-    left: 300px;
+    left: 200px;
     width: 70%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -106,21 +106,45 @@ header button{
     position: relative;
     cursor: pointer;
 }
-.div{
-    position: absolute;
-    top: 0;
-    right: 0;
-    visibility: hidden;
-    z-index: 10;
-}
-.div ul{
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    background-color: gray;
-    font-size: small;
-}
-.div ul li:hover{
-    background-color: gray;
+.side{
+    position: relative;
+    background-color: black;
+    width: 30px;
+    color: aliceblue;
+    border-radius: 100%;
+    margin-top: 25px;
+    margin-right: 40px;
+    align-items: center;
+    text-align: center;
+    height: 26px;
     cursor: pointer;
+}
+.content{
+    /* display: flex; */
+    /* justify-content: center; */
+    align-items: center;
+    background-color: white;
+    position: absolute;
+   top: 100%;
+   right: 0;
+   margin-left: 0%;
+   border-radius: 7px;
+   padding: 20px;
+   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+.content ul{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+.content ul li{
+    color: black;
+    font-family: sans-serif;
+    font-size: small;
+    cursor: pointer;
+}
+.content ul li:hover{
+    background-color: rgb(148, 147, 147);
+    border-radius: 10px;
+    padding: 5px;
 }
