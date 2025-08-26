@@ -11,7 +11,7 @@ import { Appcontext } from '../context/Appcontext'
 
 function Register() {
 
-    const { BackEnduri} = useContext(Appcontext)
+    const { BackEnduri, getUserData, userData} = useContext(Appcontext)
     const users = {
         name: '',
         email: '',
@@ -46,7 +46,6 @@ function Register() {
         try {
             const response = await axios.post(BackEnduri +'/api/auth', user)
             console.log(response)
-           
             Swal.fire({
                     title: 'Registration',
                     text: response.data.Message,

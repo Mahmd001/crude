@@ -75,7 +75,9 @@ exports.login = async(req, res)=>{
                 'none': 'lax',
                 maxAge: 5 * 24 * 60 * 60 * 1000
             })
-            res.status(200).json({Message: "user logging successifull"})
+            res.status(200).json({Message: "user logging successifull",
+                isAccountVerify:user.isAccountVerify
+            })
 
     } catch (error) {
          console.log({errorMessage: error.message})
@@ -179,19 +181,19 @@ exports.sendOtpToken = async(req, res)=>{
 
     exports.verifiedOtp = async(req, res)=>{
    const userId = req.user.id
-   const otp = req.body
+   const {otp} = req.body
     try {
         const user = await User.findById(userId)
         if(!user){
-             return res.status(404).json({errorMessage: "User not found"})
+             return res.status(404).json({Message: "User not found"})
         }
 
         if(user.otpToken === '' || user.otpToken !== otp){
-              return res.status(404).json({errorMessage: "Invalid Otp"})
+              return res.status(404).json({Message: "Invalid Otp"})
         }
 
         if(user.otpExpireAt < Date.now()){
-              return res.status(404).json({errorMessage: "Otp expired"})
+              return res.status(404).json({Message: "Otp expired"})
         }
 
         user.isAccountVerify = true;
@@ -199,9 +201,10 @@ exports.sendOtpToken = async(req, res)=>{
         user.otpToken = ''
 
         await user.save();
-          return res.status(200).json({errorMessage: "Email Verification successful"})
+          return res.status(200).json({Message: "Email Verification successful"})
     } catch (error) {
-           console.log({errorMessage: error.message})
+           console.log({Message: error.message})
+           res.status(404).json({Message: error.message})
     }
 }
 

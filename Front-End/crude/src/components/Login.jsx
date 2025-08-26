@@ -10,7 +10,7 @@ function Login() {
         password: '',
         email: ''
     }
-    const {BackEnduri} = useContext(Appcontext)
+    const {BackEnduri, getUserData, userData} = useContext(Appcontext)
     const [user, setUser] = useState(users)
     const navigate = useNavigate()
 
@@ -26,14 +26,20 @@ function Login() {
         try {
             const response = await axios.post(BackEnduri + '/api/auth/login',user)
              console.log(response)
-                        Swal.fire({
-                                title: 'Login',
-                                text: response.data.Message,
-                                icon: 'success'
-                            })
-                            setUser(users)
-                            navigate('/dash')
+              await getUserData()
+             if(response.data.isAccountVerify === true){
+                navigate('/dash')
+             }else{
 
+                 Swal.fire({
+                         title: 'Login',
+                         text: response.data.Message,
+                         icon: 'success'
+                     })
+                     setUser(users)
+                     getUserData()
+                     navigate('/otp')
+             }
         } catch (error) {
             Swal.fire({
                 title: 'Login',

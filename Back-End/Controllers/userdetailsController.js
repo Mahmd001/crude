@@ -11,7 +11,7 @@ exports.Getuser = async(req, res)=>{
           if(!user){
         return res.json({error: "user not found"})
     }
-    res.status(200).json({details:{
+    res.status(200).json({userData:{
         name: user.name,
         email: user.email,
         isAccountVerify: user.isAccountVerify

@@ -29,3 +29,98 @@ header button{
     border: none;
     border-radius: 10px;
 }
+.side-bar{
+    background-color: white;
+    display: flex;
+    width: 200px;
+    border: solid 1px green;
+    border-radius: 10px;
+}
+.side-bar ul li{
+    list-style: none;
+    padding: 10px;
+    font-family: sans-serif;
+    border-radius: 10px;
+    cursor: pointer;
+}
+#amad{
+    background-color: rgb(230, 228, 226);
+    position: relative;
+}
+.side-bar ul li{
+    width: 100%;
+    font-size: 14px;
+}
+.side-bar ul{
+    margin-top: 30px;
+}
+.side-bar ul h2{
+    font-size: large;
+    font-weight: bolder;
+    color: green;
+    font-family: sans-serif;
+}
+.side-bar ul p{
+ font-size: small;
+ color: green;
+ text-shadow: 0 .5rem 16px green;
+  font-family: sans-serif;
+}
+.side-bar ul li:hover{
+    background-color: green;
+    width: 100%;
+    color: white;
+}
+.cards{
+    display: flex;
+    position: absolute;
+    bottom: 50px;
+    left: 300px;
+    width: 70%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    
+}
+.card{
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    margin: 40px;
+    width: 300px;
+    height: 200px;
+    text-align: center
+}
+.card{
+    font-size: small;
+    font-family: sans-serif;
+}
+.profile{
+    margin-top: 20px;
+    margin-right: 25px;
+    background-color: black;
+    padding: 0px;
+    border-radius: 100%;
+    color: aliceblue;
+    width: 30px;
+    height: 27px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+}
+.div{
+    position: absolute;
+    top: 0;
+    right: 0;
+    visibility: hidden;
+    z-index: 10;
+}
+.div ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: gray;
+    font-size: small;
+}
+.div ul li:hover{
+    background-color: gray;
+    cursor: pointer;
+}
